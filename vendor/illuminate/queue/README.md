@@ -13,7 +13,7 @@ $queue = new Queue;
 
 $queue->addConnection([
     'driver' => 'beanstalkd',
-    'host' => 'localhost',
+    'host' => '192.168.43.89',
     'queue' => 'default',
 ]);
 

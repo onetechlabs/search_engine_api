@@ -17,7 +17,7 @@ class SearchEngineController extends Controller
     }
 
     public function searchEngineList(Request $request) {
-      $searchengine_lists = Searchenginelist::all()->orderBy('id', 'desc')->get();
+      $searchengine_lists = Searchenginelist::orderBy('id', 'desc')->get();
       $total_searchengine_list = Searchenginelist::all()->count();
       $out = [
           "message" => "Success",

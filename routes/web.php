@@ -16,6 +16,7 @@ $router->post("/user-login", "AuthController@userLogin");
 $router->post("/user-create", "AuthController@userCreate");
 $router->post("/user-change-password", ['middleware' => 'if_userlogin', 'uses' => "AuthController@userChangePassword"]);
 $router->post("/search", "SearchEngineController@searchEngineResults");
+$router->post("/dropdown-search-engine-lists","SearchEngineController@searchEngineList");
 
 //Search Engine List
 $router->post("/search-engine-lists", ['middleware' => 'if_userlogin', 'uses' => "SearchEngineController@searchengine_lists"]);

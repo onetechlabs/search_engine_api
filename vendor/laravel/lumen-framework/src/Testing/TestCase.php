@@ -25,7 +25,7 @@ abstract class TestCase extends BaseTestCase
      *
      * @var string
      */
-    protected $baseUrl = 'http://localhost';
+    protected $baseUrl = 'http://192.168.43.89';
 
     /**
      * The callbacks that should be run before the application is destroyed.
@@ -54,7 +54,7 @@ abstract class TestCase extends BaseTestCase
 
         $this->app = $this->createApplication();
 
-        $url = $this->app->make('config')->get('app.url', 'http://localhost');
+        $url = $this->app->make('config')->get('app.url', 'http://192.168.43.89');
 
         $this->app->make('url')->forceRootUrl($url);
 

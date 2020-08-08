@@ -447,8 +447,8 @@ class PdoSessionHandler extends AbstractSessionHandler
      */
     private function buildDsnFromUrl(string $dsnOrUrl): string
     {
-        // (pdo_)?sqlite3?:///... => (pdo_)?sqlite3?://localhost/... or else the URL will be invalid
-        $url = preg_replace('#^((?:pdo_)?sqlite3?):///#', '$1://localhost/', $dsnOrUrl);
+        // (pdo_)?sqlite3?:///... => (pdo_)?sqlite3?://192.168.43.89/... or else the URL will be invalid
+        $url = preg_replace('#^((?:pdo_)?sqlite3?):///#', '$1://192.168.43.89/', $dsnOrUrl);
 
         $params = parse_url($url);
 
