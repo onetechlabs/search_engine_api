@@ -35,7 +35,7 @@ class SearchEngineController extends Controller
       $sc_id = $request->input("sc_id");
       $keyword = $request->input("keyword");
 
-      if($sc_id==1){
+      if($sc_id==1 && $keyword!=""){
         $response = $clientGuzzle->get('https://www.googleapis.com/customsearch/v1?key=AIzaSyAEBgefbPwuDoFxAtizi2fT59qDhyDHLrw&cx=017062374917054110407:uvzcay15__s&q='.$keyword.'&num='.$this->perpage.'&start='.$this->spage);
         $out = json_decode($response->getBody());
         $sc_name=Searchenginelist::where("id",$sc_id)->get();
@@ -54,7 +54,7 @@ class SearchEngineController extends Controller
             ],
             "code"    => 200
         ];
-      } else if($sc_id==2){
+      } else if($sc_id==2 && $keyword!=""){
         $response = $clientGuzzle->request('GET','https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?customconfig=340d0b33-bc42-415d-8c70-cbb5e4b3ad52&mkt=en-US&q='.$keyword.'&count='.$this->perpage.'&offset='.$this->spage, [
             'headers' => [
                 'Ocp-Apim-Subscription-Key' => 'dcd7eff56dd44af9b58ff9509a70b06f',
@@ -80,7 +80,7 @@ class SearchEngineController extends Controller
         ];
       } else {
         $out = [
-            "message" => "Please, Fill Search Engine ID!",
+            "message" => "Sorry, Search Engine ID or Keyword is Empty!",
             "code"   => 500,
         ];
       }
